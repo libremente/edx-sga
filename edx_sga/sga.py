@@ -167,6 +167,10 @@ class StaffGradedAssignmentXBlock(XBlock):
     def score(self):
         return self.get_score()
 
+    # Decorate the view in order to support multiple devices e.g. mobile
+    # See: https://openedx.atlassian.net/wiki/display/MA/Course+Blocks+API
+    # section 'View @supports(multi_device) decorator'
+    @XBlock.supports('multi_device')
     def student_view(self, context=None):
         """
         The primary view of the StaffGradedAssignmentXBlock, shown to students
